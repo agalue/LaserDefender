@@ -4,6 +4,8 @@ using System.Collections;
 public class ShredderController : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other) {
-		Destroy (other.gameObject);
+		if (other.tag.Contains("Projectile")) {
+			Destroy (other.gameObject);
+		}
 	}
 }
