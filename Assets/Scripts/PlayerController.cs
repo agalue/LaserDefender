@@ -5,9 +5,10 @@ using System.Collections;
 public class PlayerController : MonoBehaviour
 {
 	public float health = 1000;
-	public float speed = 15.0f;
+	public float speed = 15.0f; // TODO This variable should be exposed on the options windows (user preferences). // The default depends on the device type.
 	public float padding = 0.5f;
-	public float fireRate = 0.5f;
+	public float fireRate = 0.5f; // TODO This variable should be exposed on the options windows (user preferences)
+	public bool useAccelerometer = true;
 	
 	public AudioClip fireSound;
 	public float fireSoundVolume = 1f;
@@ -44,8 +45,8 @@ public class PlayerController : MonoBehaviour
 	void Update ()
 	{
 		// Move the player
-		float moveHorizontal = Input.GetAxis ("Horizontal") * speed * Time.deltaTime;
-		transform.Translate (new Vector3 (moveHorizontal, 0, 0));
+		float moveHorizontal = useAccelerometer ? Input.acceleration.x * 2 : Input.GetAxis ("Horizontal");
+		transform.Translate (new Vector3 (moveHorizontal, 0, 0) * speed * Time.deltaTime);
 
 		// Restrict the player's movement to the Viewport width.
 		Vector3 pos = transform.position;

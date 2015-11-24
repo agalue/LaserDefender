@@ -10,8 +10,6 @@ public class EnemyController : MonoBehaviour
 	
 	public AudioClip fireSound;
 	public float fireSoundVolume = 1f;
-	public AudioClip deathSound;
-	public float deathSoundVolume = 1f;
 	public GameObject projectilePrefab;
 	public GameObject explosionPrefab;
 	public GameObject energyPrefab;
@@ -52,7 +50,6 @@ public class EnemyController : MonoBehaviour
 	
 	void Die ()
 	{
-		AudioSource.PlayClipAtPoint (deathSound, transform.position, deathSoundVolume);
 		Instantiate (explosionPrefab, transform.position, Quaternion.identity);
 		Destroy (gameObject);
 		scoreKeeper.Score (scorePoints);
