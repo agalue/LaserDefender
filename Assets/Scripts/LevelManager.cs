@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class LevelManager : MonoBehaviour
@@ -16,7 +17,7 @@ public class LevelManager : MonoBehaviour
 
 	public void InitializeGame ()
 	{
-		Application.LoadLevel ("Game");
+		SceneManager.LoadScene ("Game");
 	}
 
 	public void GameOver ()
@@ -26,7 +27,7 @@ public class LevelManager : MonoBehaviour
 
 	public void Restart ()
 	{
-		Application.LoadLevel (Application.loadedLevel);
+		SceneManager.LoadScene (SceneManager.GetActiveScene().name);
 	}
 
 	private IEnumerator Finish ()
